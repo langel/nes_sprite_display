@@ -1,0 +1,62 @@
+spr_chomps:
+	
+        ; top left maggs
+        
+   	; sprite 00
+        ldy #$00
+        lda #$7e
+        xaddoff
+        sta oam_ram_x,y
+        lda #$64
+        yaddoff
+        sta oam_ram_y,y
+        lda #$02
+        sta oam_ram_att,y
+        lda #$34
+        sta oam_ram_spr,y
+        
+   	; sprite 01
+        yadd4
+        lda #$80
+        xaddoff
+        sta oam_ram_x,y
+        lda #$64
+        yaddoff
+        sta oam_ram_y,y
+        lda #$02
+        sta oam_ram_att,y
+        lda #$78
+        sta oam_ram_spr,y
+        
+        
+        
+        ; bottom right maggs
+        
+   	; sprite 00
+        yadd4
+        lda #$86
+        xaddoff
+        sta oam_ram_x,y
+        lda #$70
+        yaddoff
+        sta oam_ram_y,y
+        lda #$02
+        sta oam_ram_att,y
+        lda #$37
+        sta oam_ram_spr,y
+        
+   	; sprite 01
+        yadd4
+        lda #$88
+        xaddoff
+        sta oam_ram_x,y
+        lda #$70
+        yaddoff
+        sta oam_ram_y,y
+        lda #$02
+        sta oam_ram_att,y
+        lda #$68
+        sta oam_ram_spr,y
+        
+        
+	rts

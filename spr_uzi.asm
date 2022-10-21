@@ -1,0 +1,2 @@
+spr_uzi:
+	rts

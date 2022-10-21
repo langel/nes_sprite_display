@@ -3,7 +3,41 @@ spr_offset_x = $38
 spr_offset_y = $39
 
 spr_current  = $3a ; which enemy shown
-
+        
+spr_ent_lo:
+	byte <spr_birb		; 0
+	byte <spr_maggs		; 1
+        byte <spr_galger	; 2
+        byte <spr_dumbface	; 3
+        byte <spr_skully	; 4
+        byte <spr_sparks	; 5
+        byte <spr_chomps	; 6
+        byte <spr_ant		; 7
+        byte <spr_zigzag	; 8
+        byte <spr_throber	; 9
+        byte <spr_skeet		; a
+        byte <spr_lasso		; b
+        byte <spr_muya		; c
+        byte <spr_uzi		; d
+        byte <spr_bullet	; e
+        byte <spr_ikesmom	; f
+spr_ent_hi:
+	byte >spr_birb
+	byte >spr_maggs
+        byte >spr_galger
+        byte >spr_dumbface
+        byte >spr_skully
+        byte >spr_sparks
+        byte >spr_chomps
+        byte >spr_ant
+        byte >spr_zigzag
+        byte >spr_throber
+        byte >spr_skeet
+        byte >spr_lasso
+        byte >spr_muya
+        byte >spr_uzi
+        byte >spr_bullet
+        byte >spr_ikesmom
 
 display_handler:	subroutine
 
@@ -38,77 +72,11 @@ display_handler:	subroutine
 .not_right
 
 
-
-	; set offset
-        ldy #$00
+	ldx spr_current
+        lda spr_ent_lo,x
+        sta temp00
+        lda spr_ent_hi,x
+        sta temp01
+        jmp (temp00)
         
-   	; sprite 00
-        lda #$78
-        clc
-        adc spr_offset_x
-        sta oam_ram_x,y
-        lda #$64
-        clc
-        adc spr_offset_y
-        sta oam_ram_y,y
-        lda #$01
-        sta oam_ram_att,y
-        lda #$2c
-        sta oam_ram_spr,y
-        
-        iny
-        iny
-        iny
-        iny
-   	; sprite 01
-        lda #$84
-        clc
-        adc spr_offset_x
-        sta oam_ram_x,y
-        lda #$64
-        clc
-        adc spr_offset_y
-        sta oam_ram_y,y
-        lda #$01
-        sta oam_ram_att,y
-        lda #$2d
-        sta oam_ram_spr,y
-        
-        iny
-        iny
-        iny
-        iny
-   	; sprite 02
-        lda #$78
-        clc
-        adc spr_offset_x
-        sta oam_ram_x,y
-        lda #$70
-        clc
-        adc spr_offset_y
-        sta oam_ram_y,y
-        lda #$01
-        sta oam_ram_att,y
-        lda #$2e
-        sta oam_ram_spr,y
-        
-        iny
-        iny
-        iny
-        iny
-   	; sprite 03
-        lda #$84
-        clc
-        adc spr_offset_x
-        sta oam_ram_x,y
-        lda #$70
-        clc
-        adc spr_offset_y
-        sta oam_ram_y,y
-        lda #$01
-        sta oam_ram_att,y
-        lda #$2f
-        sta oam_ram_spr,y
-        
-        
-        rts
+	; rts done inside jmp subroutine

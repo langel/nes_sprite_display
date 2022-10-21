@@ -11,6 +11,26 @@ temp03 =	$04
 
 spr_temp00 =	$10
 
+
+
+        MAC yadd4
+      	iny
+      	iny
+      	iny
+      	iny
+        ENDM
+        
+        MAC xaddoff
+        clc
+        adc spr_offset_x
+        ENDM
+        
+        MAC yaddoff
+        clc
+        adc spr_offset_y
+        ENDM
+
+
 phase_level =	$20
 
 tile_empty 		EQM $03
@@ -53,4 +73,71 @@ sprite_clear:
 	sta oam_ram_y,x	; PPU OAM sprite data
         inx
         bne .clear_sprite_ram
+	rts
+
+
+sprite_4_set_palette: subroutine
+	; a = palette id
+        ; y = oam ram offset
+	sta oam_ram_att+$00,y
+        sta oam_ram_att+$04,y
+        sta oam_ram_att+$08,y
+        sta oam_ram_att+$0c,y
+        rts
+        
+sprite_4_set_palette_no_process: subroutine
+	; a = palette id
+        ; y = oam ram offset
+        sta oam_ram_att+$00,y
+        sta oam_ram_att+$04,y
+        sta oam_ram_att+$08,y
+        sta oam_ram_att+$0c,y
+        rts
+
+sprite_4_set_sprite: subroutine
+	; a = top left tile id
+        ; y = oam ram offset
+	sta oam_ram_spr,y
+        clc
+        adc #$01
+	sta oam_ram_spr+$04,y
+        adc #$0f
+	sta oam_ram_spr+$08,y
+	adc #$01
+	sta oam_ram_spr+$0c,y
+        rts
+        
+sprite_4_set_sprite_flip: subroutine
+	; a = top left tile id
+        ; y = oam ram offset
+	sta oam_ram_spr+$08,y
+        clc
+        adc #$01
+	sta oam_ram_spr+$0c,y
+        adc #$0f
+	sta oam_ram_spr,y
+	adc #$01
+	sta oam_ram_spr+$04,y
+        rts
+        
+sprite_4_set_x: subroutine
+	; a = x pos
+        ; y = oam ram offset
+	sta oam_ram_x,y
+	sta oam_ram_x+$08,y
+	clc
+	adc #$08
+	sta oam_ram_x+$04,y
+	sta oam_ram_x+$0c,y
+	rts
+        
+sprite_4_set_y: subroutine
+	; a = y pos
+        ; y = oam ram offset
+	sta oam_ram_y,y
+	sta oam_ram_y+$04,y
+	clc
+	adc #$08
+	sta oam_ram_y+$08,y
+	sta oam_ram_y+$0c,y
 	rts

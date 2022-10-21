@@ -1,0 +1,2 @@
+spr_muya:
+	rts

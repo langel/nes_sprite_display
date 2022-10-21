@@ -17,22 +17,17 @@ Start:	subroutine
         jsr WaitSync	; wait for VSYNC
         jsr ClearRAM	; clear RAM
         jsr WaitSync	; wait for VSYNC (and PPU warmup)
-
-; XXX crappy palette setup
-	lda #$3f	; $3F -> A register
-        ldy #$00	; $00 -> Y register
-        sta PPU_ADDR	; write high byte first
-        sty PPU_ADDR    ; $3F00 -> PPU address
-        lda #$1c	; $1C = light blue color
-        sta PPU_DATA    ; $1C -> PPU data
-        
         
         jsr nametables_clear
+        jsr sprite_clear
         
         lda #CTRL_NMI
         sta PPU_CTRL	; enable NMI
         lda #MASK_COLOR
         sta PPU_MASK	; enable rendering
+        
+        
+        
 .endless
 	jmp .endless	; endless loop
 
@@ -40,16 +35,28 @@ Start:	subroutine
 
 	include "nesppu.dasm"
 	include "util.asm"
-        
 	include "controller.asm"
-
-	include "display_handler.asm"
 	include "palette_handler.asm"
+	include "display_handler.asm"
 
+	include "spr_birb.asm"
+	include "spr_maggs.asm"
+	include "spr_galger.asm"
+	include "spr_dumbface.asm"
+	include "spr_skully.asm"
+	include "spr_sparks.asm"
+	include "spr_chomps.asm"
+	include "spr_ant.asm"
+	include "spr_zigzag.asm"
+	include "spr_throber.asm"
+	include "spr_skeet.asm"
+	include "spr_lasso.asm"
+	include "spr_muya.asm"
+	include "spr_uzi.asm"
+	include "spr_bullet.asm"
+	include "spr_ikesmom.asm"
 
-        
-        jsr sprite_clear
-
+	
 
 ;;;;; INTERRUPT HANDLERS
 
@@ -70,8 +77,20 @@ NMIHandler: subroutine
         sta PPU_SCROLL
         sta PPU_SCROLL
         
+        ; set current sprite
+        lda #$0a
+        sta spr_current
+        
         jsr player_controls_read
 	jsr display_handler
+        
+        ; default player palette 
+	lda #$14
+        sta palette_cache+13
+	lda #$21
+        sta palette_cache+14
+	lda #$37
+        sta palette_cache+15
         
 	; each level has its own palette
 	lda #$0f
