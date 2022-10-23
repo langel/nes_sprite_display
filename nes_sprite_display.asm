@@ -55,8 +55,12 @@ Start:	subroutine
 	include "spr_uzi.asm"
 	include "spr_bullet.asm"
 	include "spr_ikesmom.asm"
+	include "spr_player.asm"
+	include "spr_crossbones.asm"
+	include "spr_starglasses.asm"
+	include "spr_powerups.asm"
+	include "spr_bosses.asm"
 
-	
 
 ;;;;; INTERRUPT HANDLERS
 
@@ -78,7 +82,7 @@ NMIHandler: subroutine
         sta PPU_SCROLL
         
         ; set current sprite
-        lda #$0f
+        lda #$12
         sta spr_current
         
         jsr player_controls_read
@@ -86,11 +90,11 @@ NMIHandler: subroutine
         
         ; default player palette 
 	lda #$14
-        sta palette_cache+13
+        sta palette_cache+15
 	lda #$21
         sta palette_cache+14
 	lda #$37
-        sta palette_cache+15
+        sta palette_cache+13
         
 	; each level has its own palette
 	lda #$0f

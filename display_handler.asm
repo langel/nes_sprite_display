@@ -21,6 +21,9 @@ spr_ent_lo:
         byte <spr_uzi		; d
         byte <spr_bullet	; e
         byte <spr_ikesmom	; f
+        byte <spr_player	; 10
+        byte <spr_player_hit	; 11
+        byte <spr_starglasses	; 12
 spr_ent_hi:
 	byte >spr_birb
 	byte >spr_maggs
@@ -38,6 +41,9 @@ spr_ent_hi:
         byte >spr_uzi
         byte >spr_bullet
         byte >spr_ikesmom
+        byte >spr_player	; 10
+        byte >spr_player_hit	; 11
+        byte >spr_starglasses	; 12
 
 display_handler:	subroutine
 
