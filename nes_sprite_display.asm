@@ -82,7 +82,7 @@ NMIHandler: subroutine
         sta PPU_SCROLL
         
         ; set current sprite
-        lda #$12
+        lda #$18
         sta spr_current
         
         jsr player_controls_read

@@ -24,6 +24,12 @@ spr_ent_lo:
         byte <spr_player	; 10
         byte <spr_player_hit	; 11
         byte <spr_starglasses	; 12
+        byte <spr_batteries	; 13
+	byte <spr_bomb		; 14
+	byte <spr_shroom	; 15
+	byte <spr_rbag		; 16
+	byte <spr_skull		; 17
+	byte <spr_1up		; 18
 spr_ent_hi:
 	byte >spr_birb
 	byte >spr_maggs
@@ -44,6 +50,12 @@ spr_ent_hi:
         byte >spr_player	; 10
         byte >spr_player_hit	; 11
         byte >spr_starglasses	; 12
+        byte >spr_batteries	; 13
+	byte >spr_bomb		; 14
+	byte >spr_shroom	; 15
+	byte >spr_rbag		; 16
+	byte >spr_skull		; 17
+	byte >spr_1up		; 18
 
 display_handler:	subroutine
 

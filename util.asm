@@ -10,6 +10,7 @@ temp02 =	$02
 temp03 =	$04
 
 spr_temp00 =	$10
+boss_temp =	$1a
 
 
 
