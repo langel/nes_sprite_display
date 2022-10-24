@@ -1,5 +1,12 @@
 spr_bullet:
 
+	ldy #2
+        ldx palette_level_offset_table,y
+	ldy #15
+        jsr palette_load
+        jsr palette_load
+        jsr palette_load
+
    	; sprite 00
         ldy #$00
         lda #$78

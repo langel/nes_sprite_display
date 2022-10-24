@@ -1,5 +1,7 @@
 spr_galger:
 
+        jsr palette_set_default
+        
    	; sprite 00
         ldy #$00
         lda #$78
@@ -8,7 +10,7 @@ spr_galger:
         lda #$67
         yaddoff
         sta oam_ram_y,y
-        lda #$01
+        lda #$03
         sta oam_ram_att,y
         lda #$7f
         sta oam_ram_spr,y
@@ -22,7 +24,7 @@ spr_galger:
         lda #$6c
         yaddoff
         sta oam_ram_y,y
-        lda #$41
+        lda #$43
         sta oam_ram_att,y
         lda #$7f
         sta oam_ram_spr,y

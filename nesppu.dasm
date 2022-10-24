@@ -26,21 +26,7 @@ WaitSync:
 	bpl WaitSync
         rts
 
-;;;;; RANDOM NUMBERS
 
-NextRandom subroutine
-	lsr
-        bcc .NoEor
-        eor #$d4
-.NoEor:
-	rts
-; Get previous random value
-PrevRandom subroutine
-	asl
-        bcc .NoEor
-        eor #$a9
-.NoEor:
-        rts
 
 ;;;;; CONTROLLER READING
 

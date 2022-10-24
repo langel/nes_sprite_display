@@ -9,6 +9,8 @@ temp01 =	$01
 temp02 =	$02
 temp03 =	$04
 
+rng0 =		$08
+
 spr_temp00 =	$10
 boss_temp =	$1a
 
@@ -30,7 +32,32 @@ boss_temp =	$1a
         clc
         adc spr_offset_y
         ENDM
+        
+        
+        
+;;;;; RANDOM NUMBERS
 
+get_next_random: subroutine
+	lda rng0
+        jsr NextRandom
+        sta rng0
+        rts
+
+NextRandom subroutine
+	lsr
+        bcc .NoEor
+        eor #$d4
+.NoEor:
+	rts
+; Get previous random value
+PrevRandom subroutine
+	asl
+        bcc .NoEor
+        eor #$a9
+.NoEor:
+        rts
+        
+        
 
 phase_level =	$20
 

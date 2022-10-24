@@ -10,26 +10,6 @@
 
 	NES_HEADER 0,2,1,NES_MIRR_HORIZ ; mapper 0, 2 PRGs, 1 CHR
 
-;;;;; START OF CODE
-
-Start:	subroutine
-	NES_INIT	; set up stack pointer, turn off PPU
-        jsr WaitSync	; wait for VSYNC
-        jsr ClearRAM	; clear RAM
-        jsr WaitSync	; wait for VSYNC (and PPU warmup)
-        
-        jsr nametables_clear
-        jsr sprite_clear
-        
-        lda #CTRL_NMI
-        sta PPU_CTRL	; enable NMI
-        lda #MASK_COLOR
-        sta PPU_MASK	; enable rendering
-        
-        
-        
-.endless
-	jmp .endless	; endless loop
 
 ;;;;; COMMON SUBROUTINES
 
@@ -60,6 +40,31 @@ Start:	subroutine
 	include "spr_starglasses.asm"
 	include "spr_powerups.asm"
 	include "spr_bosses.asm"
+        
+        
+;;;;; START OF CODE
+
+Start:	subroutine
+	NES_INIT	; set up stack pointer, turn off PPU
+        jsr WaitSync	; wait for VSYNC
+        jsr ClearRAM	; clear RAM
+        jsr WaitSync	; wait for VSYNC (and PPU warmup)
+        
+        jsr nametables_clear
+        jsr sprite_clear
+        
+        lda #CTRL_NMI
+        sta PPU_CTRL	; enable NMI
+        lda #MASK_COLOR
+        sta PPU_MASK	; enable rendering
+        
+        ; bg is black
+	lda #$0f
+        sta palette_cache
+        sta rng0 ; start somewhere
+        
+.endless
+	jmp .endless	; endless loop
 
 
 ;;;;; INTERRUPT HANDLERS
@@ -88,23 +93,6 @@ NMIHandler: subroutine
         jsr player_controls_read
 	jsr display_handler
         
-        ; default player palette 
-	lda #$14
-        sta palette_cache+15
-	lda #$21
-        sta palette_cache+14
-	lda #$37
-        sta palette_cache+13
-        
-	; each level has its own palette
-	lda #$0f
-        sta palette_cache
-	ldy phase_level
-        ldx palette_level_offset_table,y
-	ldy #15
-        jsr palette_load
-        jsr palette_load
-        jsr palette_load
         
 	RESTORE_REGS
 	rti

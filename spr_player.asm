@@ -1,4 +1,6 @@
 spr_player:
+        jsr palette_set_default
+        
    	; sprite 00
         ldy #$00
         lda #$78
@@ -29,6 +31,8 @@ spr_player:
         
         
 spr_player_hit:
+        jsr palette_set_default
+        
         
    	; sprite 00
         yadd4

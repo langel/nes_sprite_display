@@ -4,6 +4,13 @@
 
 spr_skeet:
 
+	; palette
+        lda #$17
+        sta palette_cache+16
+        lda #$38
+        sta palette_cache+17
+        lda #$21
+        sta palette_cache+18
 
         
    	; sprite 00
@@ -14,7 +21,7 @@ spr_skeet:
         lda #$67
         yaddoff
         sta oam_ram_y,y
-        lda #$22
+        lda #$21
         sta oam_ram_att,y
         lda #$4e
         sta oam_ram_spr,y
@@ -28,7 +35,7 @@ spr_skeet:
         lda #$6c
         yaddoff
         sta oam_ram_y,y
-        lda #$a2
+        lda #$a1
         sta oam_ram_att,y
         lda #$4f
         sta oam_ram_spr,y

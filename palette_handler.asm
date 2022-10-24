@@ -130,3 +130,23 @@ palette_render: subroutine
         dey
         bne .loop
 	rts
+        
+        
+        
+palette_set_default:
+        ; default player palette 
+	lda #$14
+        sta palette_cache+15
+	lda #$21
+        sta palette_cache+14
+	lda #$37
+        sta palette_cache+13
+        
+	; each level has its own palette
+	ldy phase_level
+        ldx palette_level_offset_table,y
+	ldy #15
+        jsr palette_load
+        jsr palette_load
+        jsr palette_load
+	rts

@@ -1,6 +1,8 @@
 
 spr_crossbones:
 
+        jsr palette_set_default
+        
 
 
    	; sprite 00

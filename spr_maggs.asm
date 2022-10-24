@@ -1,6 +1,8 @@
 ;; HANDLING maggs
 spr_maggs: subroutine
 	
+        jsr palette_set_default
+        
         ; top left maggs
         
    	; sprite 00

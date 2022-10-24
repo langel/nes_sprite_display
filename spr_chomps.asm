@@ -1,6 +1,15 @@
 spr_chomps:
+
+	; palette
+	ldy #$01
+        ldx palette_level_offset_table,y
+	ldy #15
+        jsr palette_load
+        jsr palette_load
+        jsr palette_load
+
 	
-        ; top left maggs
+        ; top left chomps
         
    	; sprite 00
         ldy #$00
@@ -10,7 +19,7 @@ spr_chomps:
         lda #$64
         yaddoff
         sta oam_ram_y,y
-        lda #$02
+        lda #$01
         sta oam_ram_att,y
         lda #$34
         sta oam_ram_spr,y
@@ -23,14 +32,14 @@ spr_chomps:
         lda #$64
         yaddoff
         sta oam_ram_y,y
-        lda #$02
+        lda #$01
         sta oam_ram_att,y
         lda #$78
         sta oam_ram_spr,y
         
         
         
-        ; bottom right maggs
+        ; bottom right chomps
         
    	; sprite 00
         yadd4
@@ -40,7 +49,7 @@ spr_chomps:
         lda #$70
         yaddoff
         sta oam_ram_y,y
-        lda #$02
+        lda #$01
         sta oam_ram_att,y
         lda #$37
         sta oam_ram_spr,y
@@ -53,7 +62,7 @@ spr_chomps:
         lda #$70
         yaddoff
         sta oam_ram_y,y
-        lda #$02
+        lda #$01
         sta oam_ram_att,y
         lda #$68
         sta oam_ram_spr,y

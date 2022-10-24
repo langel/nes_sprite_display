@@ -1,6 +1,14 @@
 
 spr_zigzag:
 
+	; palette
+	ldy #$04
+        ldx palette_level_offset_table,y
+	ldy #15
+        jsr palette_load
+        jsr palette_load
+        jsr palette_load
+        
         
    	; sprite 00
         ldy #$00

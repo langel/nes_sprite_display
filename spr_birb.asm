@@ -1,12 +1,14 @@
 
 spr_birb:	subroutine
+
+        jsr palette_set_default
         
    	; sprite 00
         ldy #$00
-        lda #$78
+        lda #$77
         xaddoff
         sta oam_ram_x,y
-        lda #$64
+        lda #$61
         yaddoff
         sta oam_ram_y,y
         lda #$01
@@ -16,7 +18,7 @@ spr_birb:	subroutine
         
    	; sprite 01
         yadd4
-        lda #$84
+        lda #$83
         xaddoff
         sta oam_ram_x,y
         lda #$64
@@ -29,10 +31,10 @@ spr_birb:	subroutine
         
    	; sprite 02
         yadd4
-        lda #$78
+        lda #$7a
         xaddoff
         sta oam_ram_x,y
-        lda #$70
+        lda #$6c
         yaddoff
         sta oam_ram_y,y
         lda #$01
@@ -42,10 +44,10 @@ spr_birb:	subroutine
         
    	; sprite 03
         yadd4
-        lda #$84
+        lda #$85
         xaddoff
         sta oam_ram_x,y
-        lda #$70
+        lda #$6e
         yaddoff
         sta oam_ram_y,y
         lda #$01

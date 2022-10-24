@@ -40,10 +40,13 @@ spr_batteries:
         sta oam_ram_att,y
         lda #$29
         sta oam_ram_spr,y
+        jsr palette_set_default
 	rts
         
         
 spr_bomb:
+        jsr palette_set_default
+        
    	; sprite 00
         ldy #$00
         lda #$78
@@ -59,6 +62,8 @@ spr_bomb:
 	rts
         
 spr_shroom:
+        jsr palette_set_default
+        
    	; sprite 00
         ldy #$00
         lda #$78
@@ -71,9 +76,12 @@ spr_shroom:
         sta oam_ram_att,y
         lda #$25
         sta oam_ram_spr,y
+        jsr palette_set_default
 	rts
         
 spr_rbag:
+        jsr palette_set_default
+        
    	; sprite 00
         ldy #$00
         lda #$78
@@ -86,9 +94,12 @@ spr_rbag:
         sta oam_ram_att,y
         lda #$28
         sta oam_ram_spr,y
+        jsr palette_set_default
 	rts
         
 spr_skull:
+        jsr palette_set_default
+        
    	; sprite 00
         ldy #$00
         lda #$78
@@ -101,9 +112,12 @@ spr_skull:
         sta oam_ram_att,y
         lda #$24
         sta oam_ram_spr,y
+        jsr palette_set_default
 	rts
         
 spr_1up:
+        jsr palette_set_default
+        
    	; sprite 00
         ldy #$00
         lda #$78
@@ -116,6 +130,7 @@ spr_1up:
         sta oam_ram_att,y
         lda #$26
         sta oam_ram_spr,y
+        jsr palette_set_default
 	rts
         
 

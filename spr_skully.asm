@@ -1,5 +1,7 @@
 spr_skully:
 
+        jsr palette_set_default
+        
 	ldy #$00
         
         lda #$78

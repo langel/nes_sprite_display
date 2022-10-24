@@ -1,5 +1,11 @@
 spr_uzi:
 
+	ldy #2
+        ldx palette_level_offset_table,y
+	ldy #15
+        jsr palette_load
+        jsr palette_load
+        jsr palette_load
 
 	ldy #$00
         

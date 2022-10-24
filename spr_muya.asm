@@ -1,5 +1,9 @@
 spr_muya:
 
+        ldx #75
+	ldy #18
+        jsr palette_load
+        jsr palette_load
 
    	; sprite 00
         ldy #$00

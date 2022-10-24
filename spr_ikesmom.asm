@@ -1,5 +1,13 @@
 spr_ikesmom:
 
+	ldy #2
+        ldx palette_level_offset_table,y
+	ldy #15
+        jsr palette_load
+        jsr palette_load
+        jsr palette_load
+        
+        
 	ldy #$00
         
         lda #$78

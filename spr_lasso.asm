@@ -1,5 +1,6 @@
 spr_lasso:
 
+        jsr palette_set_default
         
    	; sprite 00
         ldy #$00

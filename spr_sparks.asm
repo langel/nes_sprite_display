@@ -1,5 +1,8 @@
 spr_sparks:
 
+        jsr palette_set_default
+        
+        jsr get_next_random
         
    	; sprite 00
         ldy #$00
@@ -9,49 +12,32 @@ spr_sparks:
         lda #$64
         yaddoff
         sta oam_ram_y,y
-        lda #$00
+        jsr get_next_random
         sta oam_ram_att,y
-        lda #$6c
+        jsr get_next_random
+        lsr
+        and #$03
+        clc
+        adc #$6c
         sta oam_ram_spr,y
         
    	; sprite 01
         yadd4
-        lda #$84
+        lda #$86
         xaddoff
         sta oam_ram_x,y
-        lda #$64
+        lda #$67
         yaddoff
         sta oam_ram_y,y
-        lda #$01
+        jsr get_next_random
         sta oam_ram_att,y
-        lda #$6d
+        jsr get_next_random
+        lsr
+        and #$03
+        clc
+        adc #$6c
         sta oam_ram_spr,y
         
-   	; sprite 02
-        yadd4
-        lda #$78
-        xaddoff
-        sta oam_ram_x,y
-        lda #$70
-        yaddoff
-        sta oam_ram_y,y
-        lda #$02
-        sta oam_ram_att,y
-        lda #$6e
-        sta oam_ram_spr,y
-        
-   	; sprite 03
-        yadd4
-        lda #$84
-        xaddoff
-        sta oam_ram_x,y
-        lda #$70
-        yaddoff
-        sta oam_ram_y,y
-        lda #$03
-        sta oam_ram_att,y
-        lda #$6f
-        sta oam_ram_spr,y
         
         
 	rts
