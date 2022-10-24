@@ -30,6 +30,10 @@ spr_ent_lo:
 	byte <spr_rbag		; 16
 	byte <spr_skull		; 17
 	byte <spr_1up		; 18
+        byte <spr_moufs		; 19
+	byte <spr_vamp		; 1a
+	byte <spr_scarab	; 1b
+	byte <spr_swordtner	; 1c
 spr_ent_hi:
 	byte >spr_birb
 	byte >spr_maggs
@@ -56,6 +60,10 @@ spr_ent_hi:
 	byte >spr_rbag		; 16
 	byte >spr_skull		; 17
 	byte >spr_1up		; 18
+        byte >spr_moufs		; 19
+	byte >spr_vamp		; 1a
+	byte >spr_scarab	; 1b
+	byte >spr_swordtner	; 1c
 
 display_handler:	subroutine
 

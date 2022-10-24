@@ -14,6 +14,10 @@ rng0 =		$08
 spr_temp00 =	$10
 boss_temp =	$1a
 
+state_v4 =	$24
+state_v5 =	$25
+state_v6 =	$26
+
 
 
         MAC yadd4
