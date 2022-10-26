@@ -51,7 +51,6 @@ Start:	subroutine
         jsr WaitSync	; wait for VSYNC (and PPU warmup)
         
         jsr nametables_clear
-        jsr sprite_clear
         jsr sine_init
         
         lda #CTRL_NMI
@@ -88,10 +87,11 @@ NMIHandler: subroutine
         sta PPU_SCROLL
         
         ; set current sprite
-        lda #$1c
-        sta spr_current
+        ;lda #$1c
+        ;sta spr_current
         
         jsr player_controls_read
+        jsr sprite_clear
 	jsr display_handler
         
         

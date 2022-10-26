@@ -1,8 +1,5 @@
 
-spr_offset_x = $38
-spr_offset_y = $39
 
-spr_current  = $3a ; which enemy shown
         
 spr_ent_lo:
 	byte <spr_birb		; 0
@@ -96,6 +93,27 @@ display_handler:	subroutine
         beq .not_right
         inc spr_offset_x
 .not_right
+	; b goes backwards
+	lda player_controls_debounced
+        and #%01000000
+        beq .not_b
+        dec spr_current
+        bpl .not_b
+        lda #spr_count
+        sta spr_current
+        dec spr_current
+.not_b
+	; a goes forward
+	lda player_controls_debounced
+        and #%10000000
+        beq .not_a
+        inc spr_current
+        lda spr_current
+        cmp #spr_count
+        bcc .not_a
+        lda #$00
+        sta spr_current
+.not_a
 
 
 	ldx spr_current

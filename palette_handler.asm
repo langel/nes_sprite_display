@@ -1,5 +1,4 @@
 
-palette_cache	EQU $e0
 
 
 ;Palette00:		; 25 bytes

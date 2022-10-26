@@ -1,9 +1,6 @@
 
 ;;;;; CONTROLLER READING
 
-player_controls	=	$f0
-player_controls_debounced = $f1
-
 ; reading joypad gives us a byte
 ; bit 7 a button
 ; bit 6 b button

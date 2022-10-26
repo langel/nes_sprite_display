@@ -25,7 +25,17 @@ state_v7 =	$27
 player_x_hi = 	$30
 player_y_hi =	$31
 
+spr_offset_x = $38
+spr_offset_y = $39
+spr_current  = $3a ; which enemy shown
+spr_count EQM	$1d
+
 bat_array =	$60
+
+player_controls	=	$80
+player_controls_debounced = $81
+
+palette_cache	EQU $e0
 
 
 
