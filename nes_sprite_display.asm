@@ -86,8 +86,14 @@ NMIHandler: subroutine
         sta PPU_SCROLL
         sta PPU_SCROLL
         
+        ; reset crap
+        sta temp00
+        sta temp01
+        sta temp02
+        sta temp03
+        sta state_v7
         ; set current sprite
-        ;lda #$1c
+        ;lda #$1b
         ;sta spr_current
         
         jsr player_controls_read

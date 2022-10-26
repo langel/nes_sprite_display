@@ -36,10 +36,10 @@ spr_player_hit:
         
    	; sprite 00
         yadd4
-        lda #$80
+        lda #$78
         xaddoff
         sta oam_ram_x,y
-        lda #$70
+        lda #$64
         yaddoff
         sta oam_ram_y,y
         lda #$00
@@ -49,10 +49,10 @@ spr_player_hit:
         
    	; sprite 01
         yadd4
-        lda #$88
+        lda #$80
         xaddoff
         sta oam_ram_x,y
-        lda #$70
+        lda #$64
         yaddoff
         sta oam_ram_y,y
         lda #$00

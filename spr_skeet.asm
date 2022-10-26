@@ -18,7 +18,7 @@ spr_skeet:
         lda #$78
         xaddoff
         sta oam_ram_x,y
-        lda #$67
+        lda #$6c
         yaddoff
         sta oam_ram_y,y
         lda #$21
@@ -32,7 +32,7 @@ spr_skeet:
         lda #$84
         xaddoff
         sta oam_ram_x,y
-        lda #$6c
+        lda #$67
         yaddoff
         sta oam_ram_y,y
         lda #$a1

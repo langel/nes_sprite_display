@@ -9,7 +9,7 @@ spr_sparks:
         lda #$78
         xaddoff
         sta oam_ram_x,y
-        lda #$64
+        lda #$67
         yaddoff
         sta oam_ram_y,y
         jsr get_next_random
@@ -26,7 +26,7 @@ spr_sparks:
         lda #$86
         xaddoff
         sta oam_ram_x,y
-        lda #$67
+        lda #$64
         yaddoff
         sta oam_ram_y,y
         jsr get_next_random

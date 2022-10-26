@@ -188,10 +188,10 @@ spr_moufs:
         
 spr_vamp:
 	; state vars
-	lda #$74
+	lda #$78
         xaddoff
         sta state_v4
-	lda #$60
+	lda #$68
         yaddoff
         sta state_v5
         
@@ -455,8 +455,18 @@ spr_scarab:
 	dex
 	bpl .wing_sprites_loop
         
-        
-                
+; bullet/sun
+	ldy #$10
+        lda state_v4
+        adc #$10
+        sta oam_ram_x,y
+        lda state_v5
+        adc #$04
+        sta oam_ram_y,y
+        lda #$fe
+        sta oam_ram_spr,y
+        lda #$01
+        sta oam_ram_att,y
 	rts
         
         
