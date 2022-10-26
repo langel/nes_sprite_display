@@ -52,6 +52,7 @@ Start:	subroutine
         
         jsr nametables_clear
         jsr sprite_clear
+        jsr sine_init
         
         lda #CTRL_NMI
         sta PPU_CTRL	; enable NMI
@@ -87,7 +88,7 @@ NMIHandler: subroutine
         sta PPU_SCROLL
         
         ; set current sprite
-        lda #$19
+        lda #$1c
         sta spr_current
         
         jsr player_controls_read
