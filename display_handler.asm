@@ -114,8 +114,45 @@ display_handler:	subroutine
         lda #$00
         sta spr_current
 .not_a
+	; select selects bg mode
+	lda player_controls_debounced
+        and #%00100000
+        beq .not_sel
+        inc bg_mode
+.not_sel
+	; start toggles bg/spr
+	lda player_controls_debounced
+        and #%00010000
+        beq .not_sta
+        inc bg_hide
+.not_sta
+        
+.bg_set_colors
+	lda bg_hide
+        and #$01
+        bne .bg_hidden
+        lda bg_mode
+        and #$01
+        bne .bg_invert
+.bg_covert
+	lda #$0f
+        sta palette_cache
+        lda #$30
+        sta palette_cache+1
+        bne .bg_done
+.bg_invert
+	lda #$30
+        sta palette_cache
+        lda #$0f
+        sta palette_cache+1
+.bg_done
+	rts
+.bg_hidden
+	lda #$0f
+        sta palette_cache
+        sta palette_cache+1
 
-
+.jmp_to_sprite_handler
 	ldx spr_current
         lda spr_ent_lo,x
         sta temp00

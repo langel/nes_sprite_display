@@ -32,6 +32,9 @@ spr_count EQM	$1d
 
 bat_array =	$60
 
+bg_hide	EQM $71
+bg_mode EQM $72
+
 player_controls	=	$80
 player_controls_debounced = $81
 

@@ -18,6 +18,8 @@
 	include "controller.asm"
 	include "palette_handler.asm"
 	include "display_handler.asm"
+        
+	include "bg_title.asm"
 
 	include "spr_birb.asm"
 	include "spr_maggs.asm"
@@ -52,6 +54,7 @@ Start:	subroutine
         
         jsr nametables_clear
         jsr sine_init
+        jsr big_title_init
         
         lda #CTRL_NMI
         sta PPU_CTRL	; enable NMI
@@ -61,7 +64,13 @@ Start:	subroutine
         ; bg is black
 	lda #$0f
         sta palette_cache
+        sta palette_cache+1
         sta rng0 ; start somewhere
+        
+        lda #$00
+        sta bg_mode
+        lda #$01
+        sta bg_hide
         
 .endless
 	jmp .endless	; endless loop
@@ -70,7 +79,7 @@ Start:	subroutine
 ;;;;; INTERRUPT HANDLERS
 
 NMIHandler: subroutine
-	SAVE_REGS
+\\\\	SAVE_REGS
 	; OAM DMA	513 cycles
 	lda #$02
         sta PPU_OAM_DMA
